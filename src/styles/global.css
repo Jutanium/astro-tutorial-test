@@ -1,0 +1,155 @@
+html {
+    background-color: #00539F;
+}
+
+body {
+    background-color: var(--body-bg-color);
+    transition: background-color .45s ease-in;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 80ch;
+    padding: 1em;
+    border: 5px solid black;
+}
+
+* {
+    color: var(--text-color);
+}
+
+h1 {
+    margin: 0;
+    padding: 20px 0;
+    color: #00539F;
+    text-shadow: 3px 3px 1px grey;
+}
+
+/* Default Light Mode Theme */
+:root,
+[data-theme="default"] {
+    --body-bg-color: #E2CAF1;
+    --text-color: #333;
+    --toggler-color: #fff;
+}
+
+/* Dark Mode Theme */
+[data-theme="dark"] {
+    --body-bg-color: #0D0950;
+    --text-color: #fff;
+    --toggler-color: #333;
+}
+
+.toggle {
+    margin-top: 2em;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    border-radius: 20px;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--toggler-color);
+    border-radius: 50%;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #fff;
+}
+
+input:checked+.slider::before {
+    transform: translateX(26px);
+}
+
+/* nav styles */
+.nav {
+    align-items: center;
+    padding-top: 20px;
+}
+
+.hamburger {
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    display: block;
+    width: 40px;
+    height: 5px;
+    margin-bottom: 10px;
+    background-color: var(--text-color);
+}
+
+.nav-links {
+    width: 100%;
+    top: 5rem;
+    left: 48px;
+    background-color: #ff9776;
+    display: none;
+    margin: 0;
+}
+
+.nav-links a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.nav-links a:hover,
+a:focus {
+    background-color: #ff9776;
+}
+
+.expanded {
+    display: unset;
+}
+
+@media screen and (min-width: 636px) {
+    .nav-links {
+        margin-left: 5em;
+        display: block;
+        position: static;
+        width: auto;
+        background: none;
+    }
+
+    .nav-links a {
+        display: inline-block;
+        padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: none;
+    }
+}

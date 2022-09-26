@@ -1,0 +1,75 @@
+---
+const pageTitle = "About Me";
+const goal = 3;
+const time = "days";
+const happy = true;
+const finished = false;
+const identity = {
+    firstName: "Dan",
+    country: "United States",
+    occupation: "Who Knows What at This Point",
+    hobbies: ["singing", "reading", "twitter drama"],
+};
+const skills = ["HTML", "CSS", "JavaScript", "Solid", "Astro", "Writing Docs"];
+const skillColor = "green";
+const fontWeight = "bold";
+const textCase = "uppercase";
+const bulletStyle = "'*'";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+---
+
+<style define:vars={{ skillColor, fontWeight, textCase, bulletStyle }}>
+    h1 {
+        color: purple;
+    }
+    .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+    }
+    ul li::marker {
+        content: var(--bulletStyle);
+    }
+</style>
+
+<BaseLayout title="About this Site">
+    <p>
+        I am working through Astro's introductory tutorial. This is the second
+        page on my website, and it's the first one I built myself!
+    </p>
+    <p>
+        This site will update as I complete more of the tutorial, so keep
+        checking back and see how my journey is going!
+    </p>
+    <p>I want to finish this tutorial in {goal} {time}.</p>
+    <p>
+        But, it's ok if it takes me twice as long, and I finish in {goal * 2}!
+    </p>
+    <p>Here are a few facts about me:</p>
+    <ul>
+        <li>My name is {identity.firstName}</li>
+        <li>
+            I live in {identity.country} and I work as a {identity.occupation}
+        </li>
+        {
+            identity.hobbies.length >= 2 && (
+                <li>
+                    Two of my hobbies are: {identity.hobbies[0]} and{" "}
+                    {identity.hobbies[1]}
+                </li>
+            )
+        }
+    </ul>
+    {happy && <p>I am happy to be learning Astro!</p>}
+
+    {finished && <p>I finished this tutorial!</p>}
+
+    {goal === 3 ? <p>My goal is 3 days.</p> : <p>My goal is not 3 days.</p>}
+    <p>My skills are:</p>
+    <ul>
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+</BaseLayout>
